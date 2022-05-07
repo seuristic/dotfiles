@@ -1,5 +1,3 @@
-" config.vim
-
 let mapleader = ","
 
 set nocompatible
@@ -15,7 +13,7 @@ set shiftwidth=4
 set expandtab             " Use apropiate number of spaces
 set nowrap                " Wrapping sucks (except on markdown)
 autocmd BufRead,BufNewFile *.md,*.txt setlocal wrap " DO wrap on markdown files
-set noswapfile            " Do not leve any backup files
+set noswapfile            " Do not leave any backup files
 set mouse=a               " Enable mouse on all modes
 set clipboard=unnamed,unnamedplus     " Use the OS clipboard
 set showmatch
@@ -36,7 +34,7 @@ vmap > >gv
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
-" Autocomand to remember las editing position
+" Autocomand to remember last editing position
 augroup vimrc-remember-cursor-position
   autocmd!
   autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
@@ -87,7 +85,7 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsEditSplit="vertical"
 
 " Material theme config
-let g:material_theme_style = "darker"
+let g:material_theme_style = 'default'
 let g:material_terminal_italics = 1
 colorscheme material            " Activate the theme
 
@@ -276,17 +274,18 @@ let g:coc_global_extensions = [
     \ 'coc-css',
     \ 'coc-python',
     \ 'coc-diagnostic',
-    \ 'coc-clangd',
     \ 'coc-cssmodules',
     \ 'coc-emmet',
     \ 'coc-eslint',
     \ 'coc-fzf-preview',
     \ 'coc-git',
     \ 'coc-java',
+    \ 'coc-pairs',
     \ 'coc-snippets',
     \ 'coc-svg',
-    \ 'coc-spell-checker',
-    \ 'coc-prettier'
+    \ 'coc-prettier',
+    \ 'coc-html-css-support',
+    \ 'coc-lightbulb'
     \]
 
 if exists("##VimResized")
@@ -294,3 +293,6 @@ if exists("##VimResized")
         au VimResized * wincmd =
     endif
 endif
+
+let g:NERDTreeIgnore = ['^node_modules$']
+let NERDTreeShowHidden = 1
