@@ -1,0 +1,9 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =7
+let g:netrw_dirhist_7='/home/mshahanwaz'
+let g:netrw_dirhist_6='/home/mshahanwaz/.vim'
+let g:netrw_dirhist_5='/home/mshahanwaz/Documents/projects/bouncing-ball'
+let g:netrw_dirhist_4='/home/mshahanwaz/Documents/college/6th/Compiler Design/project/mini-python-interpreter/Phase 2'
+let g:netrw_dirhist_3='/home/mshahanwaz/Documents/college/6th/Compiler Design/project/mini-python-interpreter/Phase 1'
+let g:netrw_dirhist_2='/home/mshahanwaz/Documents/college/6th/Compiler Design/project/mini-python-interpreter/.git'
+let g:netrw_dirhist_1='/home/mshahanwaz/Documents/programming/practice'
