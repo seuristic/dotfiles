@@ -61,10 +61,11 @@ Plug 'itchyny/lightline.vim'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'editorconfig/editorconfig-vim'  " Tab/Space trough projects
+" Plug 'editorconfig/editorconfig-vim'  " Tab/Space trough projects
 " Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
 Plug 'tpope/vim-fugitive'
 Plug 'ryanoasis/vim-devicons'
+Plug 'mhinz/vim-startify'
 call plug#end()
 
 " For Neovim 0.1.3 and 0.1.4 - https://github.com/neovim/neovim/pull/2198
@@ -309,8 +310,17 @@ nmap <space>e :CocCommand explorer<CR>
 nnoremap <esc><esc> :noh<return><esc>
 
 " Preserves fold and all
-autocmd BufWinLeave ?* mkview
-autocmd BufWinEnter ?* silent loadview
+" autocmd BufWinLeave ?* mkview
+" autocmd BufWinEnter ?* silent loadview
 
 " F9 to execute and run C++ code
-map <F9> :!g++ -std=c++17 -O2 % && clear && ./a.out && rm a.out <CR>
+" F10 to run code 
+map <F9> :!g++ -std=c++17 -O2 % && clear && ./a.out <CR>
+map <F10> ./a.out <CR>
+
+" Hides coc-explorer
+set sessionoptions-=blank
+
+" Highlight
+autocmd CursorHold * silent call CocActionAsync('highlight')
+nmap <F8> :call CocAction('pickColor') <CR>
