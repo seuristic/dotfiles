@@ -51,6 +51,7 @@ call plug#begin('~/.vim/plugged')
 " Plugins here !!!!
 Plug 'tpope/vim-sensible'       " Sensible defaults
 Plug 'kaicataldo/material.vim', { 'branch': 'main' }
+" Plug 'wojciechkepka/vim-github-dark'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' } " File navigator
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }     " Install fuzzy finder binary
 Plug 'junegunn/fzf.vim'         " Enable fuzzy finder in Vim
@@ -61,11 +62,14 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'editorconfig/editorconfig-vim'  " Tab/Space trough projects
+" Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
+Plug 'tpope/vim-fugitive'
+Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
 " For Neovim 0.1.3 and 0.1.4 - https://github.com/neovim/neovim/pull/2198
 if (has('nvim'))
-  let $NVIM_TUI_ENABLE_TRUE_COLOR = 1
+  let $nvim_tui_enable_true_color = 1
 endif
 
 " For Neovim > 0.1.5 and Vim > patch 7.4.1799 - https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162
@@ -86,9 +90,9 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsEditSplit="vertical"
 
 " Material theme config
-let g:material_theme_style = 'default'
+let g:material_theme_style = 'darker'
 let g:material_terminal_italics = 1
-colorscheme material            " Activate the theme
+colorscheme material " Activate the theme
 
 let g:lightline = { 'colorscheme': 'material_vim' }     " For lightline
 
@@ -99,7 +103,7 @@ nnoremap <C-p> :Files<cr>
 
 " Set internal encoding of vim, not needed on neovim, since coc.nvim using some
 " unicode characters in the file autoload/float.vim
-set encoding=utf-8
+set encoding=UTF-8
 
 " TextEdit might fail if hidden is not set.
 set hidden
@@ -269,24 +273,27 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 let g:coc_snippet_next = '<tab>'
 
 let g:coc_global_extensions = [
-    \ 'coc-tsserver',
-    \ 'coc-json',
+    \ 'coc-snippets',
+    \ 'coc-prettier',
+    \ 'coc-dot-complete',
+    \ 'coc-explorer',
+    \ 'coc-diagnostic',
+    \ 'coc-lightbulb',
+    \ 'coc-git',
+    \ 'coc-fzf-preview',
+    \ 'coc-highlight',
     \ 'coc-html',
     \ 'coc-css',
-    \ 'coc-python',
-    \ 'coc-diagnostic',
     \ 'coc-cssmodules',
+    \ 'coc-tsserver',
+    \ 'coc-json',
+    \ 'coc-tailwindcss',
     \ 'coc-emmet',
     \ 'coc-eslint',
-    \ 'coc-fzf-preview',
-    \ 'coc-git',
-    \ 'coc-java',
     \ 'coc-pairs',
-    \ 'coc-snippets',
-    \ 'coc-svg',
-    \ 'coc-prettier',
-    \ 'coc-html-css-support',
-    \ 'coc-lightbulb'
+    \ 'coc-clangd',
+    \ 'coc-clang-format-style-options',
+    \ 'coc-java'
     \]
 
 if exists("##VimResized")
@@ -297,3 +304,13 @@ endif
 
 let g:NERDTreeIgnore = ['^node_modules$']
 let NERDTreeShowHidden = 1
+
+nmap <space>e :CocCommand explorer<CR>
+nnoremap <esc><esc> :noh<return><esc>
+
+" Preserves fold and all
+autocmd BufWinLeave ?* mkview
+autocmd BufWinEnter ?* silent loadview
+
+" F9 to execute and run C++ code
+map <F9> :!g++ -std=c++17 -O2 % && clear && ./a.out && rm a.out <CR>

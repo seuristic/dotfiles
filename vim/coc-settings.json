@@ -1,0 +1,9 @@
+{
+	"coc.preferences.formatOnSaveFiletypes": ["*"],
+	"clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/14.0.3/clangd_14.0.3/bin/clangd",
+	"colors.filetypes": ["*.css", "*.scss", "*.sass"],
+	"explorer.width": 30,
+	"explorer.file.showHiddenFiles": true,
+	"explorer.icon.enableNerdfont": true,
+	"explorer.file.child.template": "[git | 2] [selection | clip | 1] [indent][icon | 1] [diagnosticError & 1][filename omitCenter 1][modified][readonly] [linkIcon & 1][link growRight 1 omitCenter 5]"
+}
