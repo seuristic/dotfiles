@@ -316,11 +316,11 @@ nnoremap <esc><esc> :noh<return><esc>
 " F9 to execute and run C++ code
 " F10 to run code 
 map <F9> :!g++ -std=c++17 -O2 % && clear && ./a.out <CR>
-map <F10> ./a.out <CR>
+map <C-F9> :!clear && ./a.out <CR>
 
 " Hides coc-explorer
 set sessionoptions-=blank
 
 " Highlight
 autocmd CursorHold * silent call CocActionAsync('highlight')
-nmap <F8> :call CocAction('pickColor') <CR>
+nmap <F7> :call CocAction('pickColor') <CR>
