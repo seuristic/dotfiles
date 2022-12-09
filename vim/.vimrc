@@ -130,4 +130,5 @@ nnoremap <esc><esc> :noh<return><esc>
 " autocmd BufWinEnter ?* silent loadview
 
 " F9 to execute and run C++ code
-map <F9> :!g++ -std=c++17 -O2 % && clear && ./a.out && rm a.out <CR>
+map <F9> :!clear && g++ -std=c++17 -O2 % && ./a.out && rm a.out <CR>
+map <C-F9> :!clear && gcc % -lm && ./a.out && rm a.out <CR>
