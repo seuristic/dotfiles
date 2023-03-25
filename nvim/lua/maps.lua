@@ -1,5 +1,8 @@
 local keymap = vim.keymap
 
+-- jk to ESCAPE
+keymap.set('i', 'jk', '<ESC>')
+
 -- Do not yank with x
 keymap.set('n', 'x', '"_x')
 
