@@ -1,0 +1,49 @@
+snippet cp Competitive Programming
+	#include <bits/stdc++.h>
+	using namespace std;
+	
+	#ifdef LOCAL
+	#include "debug.h"
+	#else
+	#define debug(...) 42
+	#define setIO(...) 42
+	#endif
+	
+	#define F first
+	#define S second
+	#define mp make_pair
+	#define mt make_tuple
+	#define sz(x) int((x).size())
+	#define all(x) begin(x), end(x)
+	#define len(x) int((x).length())
+	#define yn(x) ((x) ? "YES" : "NO")
+	
+	using ll = long long;
+	using str = string;
+	
+	template<typename T, typename U>
+	using umap = unordered_map<T, U>;
+	
+	template<typename T>
+	using pq = priority_queue<T>;
+	
+	template<typename T, typename U>
+	bool ckmax(T& x, U y) { return (x < y ? x = y, 1 : 0); }
+	template<typename T, typename U>
+	bool ckmin(T& x, U y) { return (x > y ? x = y, 1 : 0); }
+	
+	void solve() {
+		$2
+	}
+	
+	int main() {
+		// setIO("file");
+		cin.tie(0)->sync_with_stdio(0);
+	
+		int T = 1;
+		$1cin >> T;
+		while(T--) solve();
+	
+		return 0;
+	}
+

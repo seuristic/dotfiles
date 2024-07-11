@@ -3,4 +3,5 @@
 - Vim
 - Neovim
 - Zsh
+- NvChad
 
