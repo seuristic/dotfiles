@@ -1,0 +1,31 @@
+[user]
+	email = shahanwaz@bosscoderacademy.com
+	name = Shahanwaz
+[log]
+	date = local
+[core]
+	editor = vim
+[alias]
+  st = status
+  ch = checkout
+  br = branch
+  co = commit
+  amend = commit --amend
+  # Compact Overview with Graph and Branch Info
+  lg = log --graph --pretty=format:'%C(yellow)%h%C(reset) - %C(blue)%d%C(reset) %C(bold)%s%C(reset) %C(green)(%cr) %C(red)<%an>%C(reset)' --abbrev-commit --date=relative
+  # Detailed View with Commit Body
+  lgb = log --graph --pretty=format:'%C(yellow)%h%C(reset) - %C(blue)%d%C(reset) %C(bold)%s%C(reset)%n%C(green)%b%C(reset)' --abbrev-commit --date=short
+  # File Changes Summary
+  lgc = log --pretty=format:'%C(yellow)%h%C(reset) - %C(blue)%s%C(reset) %C(green)(%cr)%C(reset) %C(red)<%an>%C(reset)' --numstat
+  # Author-Focused View
+  lga = log --pretty=format:'%C(yellow)%h%C(reset) - %C(green)%an%C(reset) - %C(blue)%ad%C(reset)%n%s' --date=short
+  # Commit History with Patch
+  lgp = log --patch --pretty=format:'%C(yellow)%h%C(reset) - %C(green)%an%C(reset) - %C(blue)%ad%C(reset)%n%s' --date=short
+  # Graph with Tag and Branch Info
+  lgt = log --graph --oneline --decorate --all
+  # Full History with Decorated Graph
+  lgg = log --graph --decorate --all --pretty=format:'%C(bold cyan)%h%C(reset) - %C(bold yellow)%d%C(reset) %s %C(dim white)- %an, %ar%C(reset)'
+  # Interactive Log with DiffStat
+  lgd = log --stat --pretty=format:'%C(yellow)%h%C(reset) %C(bold green)%ad%C(reset) %C(bold blue)%an%C(reset)%n%s%C(reset)%n' --date=short
+[merge]
+	tool = nvimdiff
