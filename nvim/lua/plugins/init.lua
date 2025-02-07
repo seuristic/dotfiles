@@ -1,12 +1,16 @@
 return {
   {
     "stevearc/conform.nvim",
-    event = "BufWritePre",
-    config = function()
-      require "configs.conform"
-    end,
+    event = 'BufWritePre', -- uncomment for format on save
+    opts = require "configs.conform",
   },
 
+  {
+    "neovim/nvim-lspconfig",
+    config = function()
+      require "configs.lspconfig"
+    end,
+  },
   {
     "neovim/nvim-lspconfig",
     config = function()
@@ -14,7 +18,6 @@ return {
       require "configs.lspconfig"
     end,
   },
-
   {
     "williamboman/mason.nvim",
     opts = {
@@ -27,7 +30,6 @@ return {
       },
     },
   },
-
   {
     "nvim-treesitter/nvim-treesitter",
     opts = {

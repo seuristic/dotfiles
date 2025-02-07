@@ -1,14 +1,15 @@
 local options = {
   formatters_by_ft = {
     lua = { "stylua" },
-    css = { "prettierd", "prettier" },
-    html = { "prettierd", "prettier" },
-    javascript = { "prettierd", "prettier" },
-    javascriptreact = { "prettierd", "prettier" },
-    typescript = { "prettierd", "prettier" },
-    typescriptreact = { "prettierd", "prettier" },
-    json = { "prettierd", "prettier" },
+    css = { "prettier" },
+    html = { "prettier" },
+    javascript = { "prettier" },
+    javascriptreact = { "prettier" },
+    typescript = { "prettier" },
+    typescriptreact = { "prettier" },
     python = { "black" },
+    tailwindcss = { "prettier" },
+    cpp = { "clang-format" },
   },
 
   -- Set the log level. Use `:ConformInfo` to see the location of the log file.
@@ -23,4 +24,4 @@ local options = {
   },
 }
 
-require("conform").setup(options)
+return options

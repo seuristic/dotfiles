@@ -1,0 +1,45 @@
+snippet base "Base Template"
+  #include <bits/stdc++.h>
+  #define endl '\n'
+
+  using namespace std;
+
+  int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    $1
+
+    return 0;
+  }
+
+snippet cp "CP Template"
+  #include <bits/stdc++.h>
+  #include <ext/pb_ds/assoc_container.hpp>
+  #include <ext/pb_ds/tree_policy.hpp>
+
+  using namespace __gnu_pbds;
+  using namespace std;
+
+  #define endl '\n'
+
+  template <typename T>
+  using indexed_set = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
+
+  void solve() {
+    $2
+  }
+
+  int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    int tc = 1;
+    $1cin >> tc;
+
+    while (tc--) {
+      solve();
+    }
+
+    return 0;
+  }

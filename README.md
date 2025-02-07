@@ -1,7 +1,7 @@
 # Configuration files
 
-- Vim
-- Neovim
-- Zsh
-- NvChad
+- vim
+- nvchad (neovim)
+- zsh
+- gitconfig
 
