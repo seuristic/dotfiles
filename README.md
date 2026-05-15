@@ -3,5 +3,4 @@
 - vim
 - nvchad (neovim)
 - zsh
-- gitconfig
-
+- zed > settings.json

@@ -1,0 +1,87 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "edit_predictions": {
+    "mode": "subtle",
+  },
+  "ui_font_family": "Inter",
+  "ui_font_features": {
+    "calt": true,
+    "liga": true,
+    "cv10": true,
+    "cv06": true,
+    "cv11": true,
+    "ss02": true,
+  },
+  "buffer_font_family": "JetBrainsMono Nerd Font",
+  "buffer_font_features": {
+    "calt": true,
+  },
+  "terminal": {
+    "font_family": "JetBrainsMono Nerd Font",
+    "font_features": {
+      "calt": true,
+    },
+  },
+  "project_panel": {
+    "dock": "left",
+  },
+  "outline_panel": {
+    "dock": "left",
+  },
+  "collaboration_panel": {
+    "dock": "left",
+  },
+  "agent": {
+    "default_model": {
+      "provider": "google",
+      "model": "gemini-3-flash-preview",
+      "enable_thinking": false,
+    },
+    "dock": "right",
+    "favorite_models": [],
+    "model_parameters": [],
+  },
+  "git_panel": {
+    "dock": "left",
+  },
+  "vim_mode": false,
+  "icon_theme": {
+    "mode": "dark",
+    "light": "Zed (Default)",
+    "dark": "Zed (Default)",
+  },
+  "session": {
+    "trust_all_worktrees": true,
+  },
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false,
+  },
+  "ui_font_size": 16,
+  "buffer_font_size": 16.0,
+  "theme": {
+    "mode": "dark",
+    "light": "One Light",
+    "dark": "GitHub Dark Dimmed",
+  },
+  "format_on_save": "on",
+  "languages": {
+    "C++": {
+      "show_edit_predictions": false,
+      "tab_size": 2,
+      "formatter": {
+        "external": {
+          "command": "clang-format",
+          "arguments": ["-style=file"],
+        },
+      },
+    },
+  },
+}
