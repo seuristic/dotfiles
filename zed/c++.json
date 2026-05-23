@@ -33,5 +33,42 @@
       "  tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;"
     ],
     "description": "Policy-based Data Structure"
+  },
+  "Union-Find Disjoint Set": {
+    "prefix": "ufds",
+    "body": [
+      "class UnionFind {",
+      "  int num_sets;",
+      "  vector<int> p, rank, set_size;",
+      "",
+      "public:",
+      "  UnionFind(int n) {",
+      "    num_sets = n;",
+      "    p.assign(n, 0);",
+      "    for (int i = 0; i < n; ++i) p[i] = i;",
+      "    rank.assign(n, 0);",
+      "    set_size.assign(n, 1);",
+      "  }",
+      "",
+      "  int findSet(int x) { return p[x] == x ? x : p[x] = findSet(p[x]); }",
+      "",
+      "  bool isSameSet(int x, int y) { return findSet(x) == findSet(y); }",
+      "",
+      "  int numDisjointSets() { return num_sets; }",
+      "",
+      "  int sizeOfSet(int x) { return set_size[findSet(x)]; }",
+      "",
+      "  void unionSet(int x, int y) {",
+      "    if (isSameSet(x, y)) return;",
+      "    x = findSet(x), y = findSet(y);",
+      "    if (rank[x] > rank[y]) swap(x, y);",
+      "    p[x] = y;",
+      "    if (rank[x] == rank[y]) ++rank[y];",
+      "    set_size[y] += set_size[x];",
+      "    --num_sets;",
+      "  }",
+      "};"
+    ],
+    "description": "Union-Find Disjoint Set"
   }
 }
