@@ -1,14 +1,14 @@
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+# export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
-# Path to your oh-my-zsh installation.
+# Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
+# load a random theme each time Oh My Zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell" # set by `omz`
+ZSH_THEME="robbyrussell"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -85,73 +85,70 @@ source $ZSH/oh-my-zsh.sh
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
 # else
-#   export EDITOR='mvim'
+#   export EDITOR='nvim'
 # fi
 
 # Compilation flags
-# export ARCHFLAGS="-arch x86_64"
+# export ARCHFLAGS="-arch $(uname -m)"
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# Set personal aliases, overriding those provided by Oh My Zsh libs,
+# plugins, and themes. Aliases can be placed here, though Oh My Zsh
+# users are encouraged to define aliases within a top-level file in
+# the $ZSH_CUSTOM folder, with .zsh extension. Examples:
+# - $ZSH_CUSTOM/aliases.zsh
+# - $ZSH_CUSTOM/macos.zsh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-export EDITOR=nvim
-export VISUAL=nvim
-
-# CP
-run() {
-  local input=""
-  local output=""
-  local check_output=""
-  local file=""
-
-  while [[ "$1" =~ ^- ]]; do
-    case "$1" in
-      -i) input="input.txt" ;;
-      -io) input="input.txt"; output="output.txt" ;;
-      -c) input="input.txt"; check_output="output.txt" ;;
-      *) echo "Invalid option: $1"; return 1 ;;
-    esac
-    shift
-  done
-
-  file="$1"
-  if [[ -z "$file" ]]; then
-    echo "Usage: run [-i|-io|-c] file.cpp"
-    return 1
-  fi
-
-  g++ -DLOCAL -std=c++17 -O2 -o "${file%.*}" "$file" -Wall || return 1
-  
-  if [[ -n "$check_output" ]]; then
-    "./${file%.*}" < "$input" > temp.txt
-    diff temp.txt "$check_output"
-    rm temp.txt
-  elif [[ -n "$output" ]]; then
-    "./${file%.*}" < "$input" > "$output"
-  elif [[ -n "$input" ]]; then
-    "./${file%.*}" < "$input"
-  else
-    "./${file%.*}"
-  fi
-  
-  rm "${file%.*}"
-}
-
-# pnpm
-export PNPM_HOME="/home/shahanwaz/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
-
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-export PATH=$HOME/.local/bin:$PATH
+
+# nvim
+export PATH="$HOME/.local/bin:$PATH"
+
+# Competitive Programming - run command
+run() {
+  mode="$1"
+  file="$2"
+
+  if [[ "$mode" != -* ]]; then
+    file="$mode"
+    mode=""
+  fi
+
+  g++ -std=c++17 -O2 -Wall "$file" -o a.out || return
+
+  case "$mode" in
+    -i)
+      ./a.out < file.in
+      ;;
+
+    -o)
+      ./a.out > file.out
+      ;;
+
+    -io|-oi)
+      ./a.out < file.in > file.out
+      ;;
+
+    -c)
+      ./a.out < file.in > file.out
+
+      if diff -q file.out expected.out >/dev/null; then
+        echo "Accepted"
+      else
+        echo "Wrong Answer"
+        echo
+        diff -u expected.out file.out
+      fi
+      ;;
+
+    *)
+      ./a.out
+      ;;
+  esac
+}
