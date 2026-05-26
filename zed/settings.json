@@ -8,6 +8,7 @@
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
   "edit_predictions": {
+    "provider": "copilot",
     "mode": "subtle",
   },
   "ui_font_family": "Inter",
@@ -17,7 +18,9 @@
     "cv10": true,
     "cv06": true,
     "cv11": true,
-    "ss02": true,
+    // "ss02": true,
+    "cv08": true,
+    "zero": true,
   },
   "buffer_font_family": "JetBrainsMono Nerd Font",
   "buffer_font_features": {
@@ -55,7 +58,7 @@
   "icon_theme": {
     "mode": "dark",
     "light": "Zed (Default)",
-    "dark": "Zed (Default)",
+    "dark": "Catppuccin Frappé",
   },
   "session": {
     "trust_all_worktrees": true,
@@ -71,6 +74,18 @@
     "light": "One Light",
     "dark": "GitHub Dark Dimmed",
   },
+  "lsp": {
+    "clangd": {
+      "binary": {
+        "path": "/opt/homebrew/opt/llvm/bin/clangd",
+        "arguments": [
+          "--query-driver=/opt/homebrew/bin/g++-15",
+          "--background-index",
+          "--clang-tidy",
+        ],
+      },
+    },
+  },
   "format_on_save": "on",
   "languages": {
     "C++": {
@@ -78,7 +93,7 @@
       "tab_size": 2,
       "formatter": {
         "external": {
-          "command": "clang-format",
+          "command": "/opt/homebrew/opt/llvm/bin/clang-format",
           "arguments": ["-style=file"],
         },
       },
